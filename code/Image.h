@@ -17,7 +17,7 @@ public:
     Pixel **pixels;
     std::string format;
 
-    Image() : width(0), height(0), maxColorValue(255), pixels(nullptr), format("P3") {}
+    Image() : width(0), height(0), maxColorValue(255), pixels(nullptr), format("\0") {}
 
     bool readFile(const string &filename)
     {
@@ -28,26 +28,17 @@ public:
             return false;
         }
 
-        file >> format;
+        format = nextToken(file);
+        width = stoi(nextToken(file));
+        height = stoi(nextToken(file));
+        maxColorValue = stoi(nextToken(file));
 
         char ch;
-        file >> ws;
-        while (file.peek() == '#')
-        {
-            string comment;
-            getline(file, comment);
-            file >> ws;
-        }
-
-        file >> width >> height >> maxColorValue;
-
         file.get(ch);
 
         pixels = new Pixel *[height];
         for (int i = 0; i < height; i++)
-        {
             pixels[i] = new Pixel[width];
-        }
 
         if (format == "P6")
         {
@@ -87,6 +78,30 @@ public:
         return true;
     }
 
+    string nextToken(ifstream &file)
+    {
+        string token;
+        while (true)
+        {
+            file >> token;
+            if (token[0] == '#')
+            {
+                string comment;
+                getline(file, comment);
+                continue;
+            }
+            return token;
+        }
+    }
+
+    void showInfo()
+    {
+        cout << "Format: " << format << endl;
+        cout << "Width: " << width << endl;
+        cout << "Height: " << height << endl;
+        cout << "Max Color Value: " << maxColorValue << endl;
+    }
+
     bool writeFile(const string &filename)
     {
         ofstream file(filename, ios::binary);
@@ -96,9 +111,9 @@ public:
             return false;
         }
 
-        file << format << "\n";
+        file << format << " #yeh file ka format hai bedu\n";
         file << width << " " << height << "\n";
-        file << maxColorValue << "\n";
+        file << maxColorValue << " #oo max color ki value yh hai\n";
 
         for (int i = 0; i < height; i++)
         {
