@@ -1,5 +1,4 @@
 #pragma once
-
 #include "pixel.h"
 #include <string>
 #include <fstream>
@@ -129,6 +128,157 @@ public:
 
         file.close();
         return true;
+    }
+
+    void makeBlack()
+    {
+        if (pixels == nullptr)
+        {
+            cerr << "Error: Image data is not loaded." << endl;
+            return;
+        }
+        
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                pixels[i][j].R = 0;
+                pixels[i][j].G = 0;
+                pixels[i][j].B = 0;
+            }
+        }
+    }
+
+    void makeWhite()
+    {
+        if (pixels == nullptr)
+        {
+            cerr << "Error: Image data is not loaded." << endl;
+            return;
+        }
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                pixels[i][j].R = 255;
+                pixels[i][j].G = 255;
+                pixels[i][j].B = 255;
+            }
+        }
+    }
+
+    void makeRed()
+    {
+        if (pixels == nullptr)
+        {
+            cerr << "Error: Image data is not loaded." << endl;
+            return;
+        }
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                pixels[i][j].R = 255;
+                pixels[i][j].G = 0;
+                pixels[i][j].B = 0;
+            }
+        }
+    }
+
+    void makeYellow()
+    {
+        if (pixels == nullptr)
+        {
+            cerr << "Error: Image data is not loaded." << endl;
+            return;
+        }
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                pixels[i][j].R = 255;
+                pixels[i][j].G = 255;
+                pixels[i][j].B = 0;
+            }
+        }
+    }
+
+    void makeMagenta()
+    {
+        if (pixels == nullptr)
+        {
+            cerr << "Error: Image data is not loaded." << endl;
+            return;
+        }
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                pixels[i][j].R = 255;
+                pixels[i][j].G = 0;
+                pixels[i][j].B = 255;
+            }
+        }
+    }
+
+    void makeCyan(){
+        if (pixels == nullptr)
+        {
+            cerr << "Error: Image data is not loaded." << endl;
+            return;
+        }
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                pixels[i][j].R = 0;
+                pixels[i][j].G = 255;
+                pixels[i][j].B = 255;
+            }
+        }
+    }
+
+    void makeGreen()
+    {
+        if (pixels == nullptr)
+        {
+            cerr << "Error: Image data is not loaded." << endl;
+            return;
+        }
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                pixels[i][j].R = 0;
+                pixels[i][j].G = 255;
+                pixels[i][j].B = 0;
+            }
+        }
+    }   
+
+    void makeBlue()
+    {
+        if (pixels == nullptr)
+        {
+            cerr << "Error: Image data is not loaded." << endl;
+            return;
+        }
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                pixels[i][j].R = 0;
+                pixels[i][j].G = 0;
+                pixels[i][j].B = 255;
+            }
+        }
     }
 
     ~Image()
