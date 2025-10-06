@@ -22,6 +22,7 @@ void showMenu()
     cout << "11. Make Grayscale\n";
     cout << "12. Turn Image\n";
     cout << "13. Save Image\n";
+    cout << "14. Morph Images (Don't use option 1)\n";
     cout << "0. Exit\n";
     cout << "================================\n";
     cout << "Enter choice: ";
@@ -29,8 +30,9 @@ void showMenu()
 
 int main()
 {
-    Image img;
-    string filename;
+
+    Image img, I1, I2;
+    string filename, img1, img2;
     int choice;
 
     do
@@ -135,6 +137,25 @@ int main()
             }
             else
                 cout << "Failed to save image.\n";
+            break;
+
+        case 14:
+
+            cout << "Enter first image filename to load: ";
+            cin >> img1;
+            I1.readFile(IMAGE_LOAD_PATH + img1);
+            I1.showInfo();
+
+            cout << "Enter second image filename to load: ";
+            cin >> img2;
+            I2.readFile(IMAGE_LOAD_PATH + img2);
+            I2.showInfo();
+
+            
+            if (img.makeMorph(I1, I2))
+                cout << "Morph images created successfully!\n";
+            else
+                cout << "Failed to create morph images.\n";
             break;
 
         case 0:

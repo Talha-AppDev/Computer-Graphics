@@ -1,0 +1,44 @@
+command: 
+(for i in $(seq 0 19); do echo "file 'morph_$i.ppm'"; echo "duration 1"; done) > frames.txt && ffmpeg -f concat -safe 0 -i frames.txt -c:v libx264 -pix_fmt yuv420p morph_video.mp4
+
+file 'morph_0.ppm'
+duration 1
+file 'morph_1.ppm'
+duration 1
+file 'morph_2.ppm'
+duration 1
+file 'morph_3.ppm'
+duration 1
+file 'morph_4.ppm'
+duration 1
+file 'morph_5.ppm'
+duration 1
+file 'morph_6.ppm'
+duration 1
+file 'morph_7.ppm'
+duration 1
+file 'morph_8.ppm'
+duration 1
+file 'morph_9.ppm'
+duration 1
+file 'morph_10.ppm'
+duration 1
+file 'morph_11.ppm'
+duration 1
+file 'morph_12.ppm'
+duration 1
+file 'morph_13.ppm'
+duration 1
+file 'morph_14.ppm'
+duration 1
+file 'morph_15.ppm'
+duration 1
+file 'morph_16.ppm'
+duration 1
+file 'morph_17.ppm'
+duration 1
+file 'morph_18.ppm'
+duration 1
+file 'morph_19.ppm'
+duration 1
+
